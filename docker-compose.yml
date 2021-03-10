@@ -1,0 +1,30 @@
+version: '3'
+services:
+  gohugo-website:
+  # build this local dockerfile (current working directory)
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        GO_VER: 1.16
+        
+    environment:
+      - GO_VER=1.16
+    # harbor registry container
+    image: reg.wizznet.co.uk:80/wizznet/wizznet-gohugo-web
+#    env_file: .env
+    container_name: gohugo-website
+    hostname: gohugo-website
+    restart: "always"
+    privileged: false
+    entrypoint: ["hugo", "server", "-D", "--bind", "0.0.0.0"]
+    networks:
+      wizcloud_hugo:
+ #   volumes:
+ #     - /root/.ssh/config:/root/.ssh/config
+
+networks:
+  wizcloud_hugo:
+    ipam:
+      driver: default
+
