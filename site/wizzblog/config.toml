@@ -1,0 +1,4 @@
+baseURL = "blog.wizznet.co.uk"
+languageCode = "en-us"
+title = "A Technical Tale of Trials and Tribulations"
+theme = "hugo.386"

@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
       args:
         GO_VER: 1.16
-        
+  
     environment:
       - GO_VER=1.16
     # harbor registry container
@@ -17,11 +17,13 @@ services:
     hostname: gohugo-website
     restart: "always"
     privileged: false
-    entrypoint: ["hugo", "server", "-D", "--bind", "0.0.0.0"]
+    entrypoint: ["hugo", "server", "-D", "--bind", "0.0.0.0", "-b", "10.12.12.184"]
+    ports:
+      - 1313:1313
     networks:
       wizcloud_hugo:
- #   volumes:
- #     - /root/.ssh/config:/root/.ssh/config
+    volumes:
+      - ./site/wizzblog/config.toml:/go/src/github.com/wizzblog/config.toml
 
 networks:
   wizcloud_hugo:
