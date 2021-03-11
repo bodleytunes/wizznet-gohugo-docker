@@ -4,7 +4,7 @@ services:
   # build this local dockerfile (current working directory)
     build:
       context: .
-      dockerfile: Dockerfilev2
+      dockerfile: Dockerfile
    #   args:
    #     GO_VER: 1.16
   
